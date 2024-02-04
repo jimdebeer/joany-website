@@ -13,12 +13,12 @@
   margin-top: 100px;
   width: 100%;
   flex-grow: 1;
-  max-width: 845px;
   padding-bottom: 150px;
 }
 
 .page-nested {
   width: 100%;
+  max-width: 845px;
 }
 
 .page img {
@@ -41,10 +41,10 @@
 }
 
 .page h1 {
-  line-height: 48px;
-  font-size: 98px;
-  font-weight: 400;
-  margin-bottom: 16px;
+  line-height: 76px;
+  font-size: 78px;
+  font-weight: 300;
+  margin-bottom: 28px;
 }
 
 .page h2 {

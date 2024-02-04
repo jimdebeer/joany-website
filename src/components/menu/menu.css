@@ -50,7 +50,8 @@
 }
 
 .menu-active > * {
-  background-color: white;
+  background-color: black;
+  color: white;
   /* anti-alias for active state (vs border) */
   box-shadow: 0 0 1px 0 gray inset, 0 0 1px 0 gray;
 }

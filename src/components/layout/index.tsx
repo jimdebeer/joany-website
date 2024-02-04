@@ -1,4 +1,4 @@
-import { createSignal } from 'solid-js'
+import { For, createSignal } from 'solid-js'
 import Menu from '../menu'
 import './layout.css'
 import { DataItem, DataBlock } from '../../data/data'
@@ -17,60 +17,57 @@ const Block = (p: { block: DataBlock }) => {
             setOpen(!open())
           }}
           style={{
-            cursor: 'pointer',
             display: 'flex',
-            width: '75%',
-            'margin-top': '32px',
+            'border-bottom': '2px solid black',
           }}
         >
           <div
             style={{
-              'font-weight': '500',
-              'padding-right': '12px',
-              'white-space': 'nowrap',
-            }}
-          >
-            {p.block.title}
-          </div>
-          <div
-            style={{
-              transform: 'translate(0px,-4px)',
-
+              cursor: 'pointer',
               display: 'flex',
-              'align-items': 'end',
-              width: '100%',
+              // width: '75%',
+              width: '30px',
+
+              'border-top-left-radius': '148px',
+              'border-top-right-radius': '148px',
+              height: '15px',
+              background: 'black',
+              color: 'white',
+              'justify-content': 'center',
+              // padding: '15px',
+              'align-items': 'center',
+              'margin-top': '30px',
+              'margin-left': ~~(Math.random() * 10) * 10 + '%',
+              position: 'relative',
             }}
           >
-            <div
+            {/* <div
               style={{
-                'border-bottom': '2px solid black',
-                width: '100%',
-              }}
-            />
-            <svg
-              width="13"
-              height="9"
-              viewBox="0 0 13 9"
-              fill="none"
-              style={{
-                transform: open()
-                  ? 'rotate(180deg) translate(2px,0px)'
-                  : 'translate(-1px,7px)',
+                'font-size': '78px',
+                position: 'absolute',
+                // top: '-36px',
+                // left: '-20px',
               }}
             >
-              <path
-                d="M1 1L5.7027 7L11.7027 1"
-                stroke="black"
-                stroke-width="2"
-              />
-            </svg>
+              +
+            </div> */}
           </div>
         </div>
-        {open() ? (
-          <div style={{ 'margin-top': '-16px' }}>
-            <Block block={{ html: p.block.html }} />
-          </div>
-        ) : null}
+        <div
+          onClick={() => {
+            setOpen(!open())
+          }}
+          style={{
+            'user-select': 'none',
+            'margin-top': '10px',
+            'max-width': '450px',
+            'margin-bottom': '15px',
+            'font-weight': '500',
+          }}
+        >
+          {p.block.title}
+        </div>
+        {open() ? <Block block={{ html: p.block.html }} /> : null}
       </div>
     )
   }
@@ -88,6 +85,7 @@ const Block = (p: { block: DataBlock }) => {
 const Page = (p: { data: DataItem }) => {
   return (
     <div
+      class="page-nested"
       style={{
         width: '100%',
         'margin-top': '24px',
@@ -132,12 +130,84 @@ const Page = (p: { data: DataItem }) => {
   )
 }
 
-const HomePage = () => {
-  return <div>HOME!</div>
+const HomePage = (p: { data: DataItem[] }) => {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        gap: '30px',
+        'flex-wrap': 'wrap',
+      }}
+    >
+      <For each={p.data}>
+        {(item, index) => {
+          return (
+            <div
+              style={{
+                display: 'flex',
+                width: '450px',
+                position: 'relative',
+                'margin-bottom': '60px',
+              }}
+            >
+              <div
+                style={{
+                  // border: '1px solid blue',
+                  width: '200px',
+                  height: '60px',
+                  border: '1xp solid blue',
+                  position: 'absolute',
+                  'transform-origin': 'left',
+                  transform: 'rotate(90deg) translate(20px,-50px)',
+                  'font-size': '18px',
+                }}
+              >
+                {item.title}
+                <div
+                  style={{
+                    'font-size': '11px',
+                    'margin-top': '5px',
+                    opacity: 0.4,
+                    'font-weight': 600,
+                  }}
+                >
+                  {item.date}
+                </div>
+              </div>
+              <div
+                style={{
+                  width: '160px',
+                  'margin-right': '14px',
+                  'font-size': '32px',
+                }}
+              >
+                {index() < 9 ? '0' : null}
+                {index() + 1}
+              </div>
+              <div
+                style={{
+                  // 'margin-top': '3px',
+                  width: '100%',
+                  'box-sizing': 'border-box',
+                  height: '300px',
+                  'background-image': `url(${item.hero})`,
+                  'background-repeat': 'no-repeat',
+                  'background-size': 'cover',
+                  'background-position': 'center',
+                }}
+              ></div>
+            </div>
+          )
+        }}
+      </For>
+    </div>
+  )
 }
 
 const About = () => {
-  return <div class="page-about" innerHTML={week1.blocks[0].html}></div>
+  return (
+    <div class="page-about page-nested" innerHTML={week1.blocks[0].html}></div>
+  )
 }
 
 export default function Layout(p: { data: DataItem[] }) {
@@ -149,15 +219,13 @@ export default function Layout(p: { data: DataItem[] }) {
         <Menu active={active()} data={p.data} setActive={setActive} />
       </div>
       <div class="page-main">
-        <div class="page-nested">
-          {active() === -2 ? (
-            <About />
-          ) : active() === -1 ? (
-            <HomePage />
-          ) : (
-            <Page data={p.data[active()]} />
-          )}
-        </div>
+        {active() === -2 ? (
+          <About />
+        ) : active() === -1 ? (
+          <HomePage data={p.data} />
+        ) : (
+          <Page data={p.data[active()]} />
+        )}
       </div>
       <div class="page-rest" />
     </div>

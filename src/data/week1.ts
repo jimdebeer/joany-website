@@ -21,7 +21,7 @@ export const week1: DataItem = {
       <p>`,
     },
     {
-      html: `<h1>BAAAH<h1><p>dnqiuowdnqw qwopdnqwoc hqwofihw0fw jh</p><b>FLAP</b>`,
+      html: `<h1>WORDS OF CONSESSION</h1><p>Art as a theory</p><b>Block theory powerful words in block "Goentoeroe"</b>`,
     },
     {
       expandable: true,
@@ -30,12 +30,12 @@ export const week1: DataItem = {
     },
     {
       expandable: true,
-      title: 'Joany Baaah',
+      title: 'Joany in the slurperloere with friends',
       html: '<b>bla bla</b>',
     },
     {
       expandable: true,
-      title: 'Joany xxxx',
+      title: 'Joany on the spot',
       html: '<b>bla bla</b>',
     },
     {
