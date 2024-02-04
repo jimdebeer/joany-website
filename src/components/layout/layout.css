@@ -10,6 +10,7 @@
 }
 
 .page-main {
+  margin-top: 100px;
   width: 100%;
   flex-grow: 1;
   max-width: 845px;
@@ -41,6 +42,39 @@
 
 .page h1 {
   line-height: 48px;
-  font-size: 48px;
+  font-size: 98px;
+  font-weight: 400;
   margin-bottom: 16px;
+}
+
+.page h2 {
+  line-height: 48px;
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+.page-inner {
+  margin-top: 100px;
+  display: flex;
+  border-top: 5px solid black;
+}
+
+@media (width <= 850px) {
+  .page {
+    flex-direction: column;
+  }
+  .page-main {
+    margin-top: 0px;
+  }
+  .page-inner {
+    margin-top: -21px;
+    padding-top: 60px;
+    flex-direction: column;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .page-about {
+    padding: 24px;
+  }
 }

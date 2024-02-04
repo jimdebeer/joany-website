@@ -10,6 +10,16 @@
   line-height: 17px;
 }
 
+@media (width <= 850px) {
+  .menu {
+    flex-direction: row;
+    padding-top: 24px;
+    padding-right: 12px;
+    padding-left: 24px;
+    padding-bottom: 0px;
+  }
+}
+
 .menu > * {
   cursor: pointer;
   padding: 2px;

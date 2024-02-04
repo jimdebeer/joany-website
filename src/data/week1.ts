@@ -19,8 +19,26 @@ export const week1: DataItem = {
       <p>`,
     },
     {
+      html: `<h1>BAAAH<h1><p>dnqiuowdnqw qwopdnqwoc hqwofihw0fw jh</p><b>FLAP</b>`,
+    },
+    {
       expandable: true,
       title: 'Joany',
+      html: '<b>bla bla</b>',
+    },
+    {
+      expandable: true,
+      title: 'Joany Baaah',
+      html: '<b>bla bla</b>',
+    },
+    {
+      expandable: true,
+      title: 'Joany xxxx',
+      html: '<b>bla bla</b>',
+    },
+    {
+      expandable: true,
+      title: 'Joany GURT',
       html: '<b>bla bla</b>',
     },
   ],

@@ -2,6 +2,7 @@ import { createSignal } from 'solid-js'
 import Menu from '../menu'
 import './layout.css'
 import { DataItem, DataBlock } from '../../data/data'
+import { week1 } from '~/data/week1'
 
 const Block = (p: { block: DataBlock }) => {
   // add expandable
@@ -13,14 +14,12 @@ const Block = (p: { block: DataBlock }) => {
       <div>
         <div
           onClick={() => {
-            console.log('flap?', open())
             setOpen(!open())
           }}
           style={{
             cursor: 'pointer',
             display: 'flex',
             width: '75%',
-            opacity: open() ? 0.5 : 1,
             'margin-top': '32px',
           }}
         >
@@ -28,6 +27,7 @@ const Block = (p: { block: DataBlock }) => {
             style={{
               'font-weight': '500',
               'padding-right': '12px',
+              'white-space': 'nowrap',
             }}
           >
             {p.block.title}
@@ -97,16 +97,10 @@ const Page = (p: { data: DataItem }) => {
         style={{
           'min-width': '100%',
           'background-color': '#eee',
-          'margin-bottom': '100px',
         }}
         src={p.data.hero}
       />
-      <div
-        style={{
-          display: 'flex',
-          'border-top': '5px solid black',
-        }}
-      >
+      <div class="page-inner">
         <div
           style={{
             'padding-right': '90px',
@@ -143,7 +137,7 @@ const HomePage = () => {
 }
 
 const About = () => {
-  return <div>About!</div>
+  return <div class="page-about" innerHTML={week1.blocks[0].html}></div>
 }
 
 export default function Layout(p: { data: DataItem[] }) {
