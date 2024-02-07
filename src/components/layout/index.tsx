@@ -212,11 +212,6 @@ export default function Layout(p: { data: DataItem[] }) {
       setActive(Number(window.location.hash.split('#')[1] * 1))
     })
 
-    const h = window.location.hash.split('#')[1]
-
-    // @ts-ignore
-    setActive(h !== undefined ? h * 1 : -1)
-
     createEffect(() => {
       window.location.hash = active() + ''
     })
