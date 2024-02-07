@@ -7,7 +7,7 @@ export default function Menu(p: {
   data: DataItem[]
   setActive: (nr: number) => void
 }) {
-  const menuItems = ['a', 'h', ...p.data.map((d) => d.index)]
+  const menuItems = ['a', 'h', ...p.data.map((d, i) => i)]
   return (
     <div class="menu">
       <Index each={menuItems}>

@@ -10,11 +10,14 @@
   line-height: 17px;
 }
 
-@media (width <= 850px) {
+@media (width <= 900px) {
   .menu {
+    width: calc(100vw - 48px);
+    flex-wrap: wrap;
     flex-direction: row;
     padding-top: 24px;
-    padding-right: 12px;
+    justify-content: space-between;
+    padding-right: 24px;
     padding-left: 24px;
     padding-bottom: 0px;
   }

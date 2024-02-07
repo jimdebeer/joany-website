@@ -3,7 +3,6 @@ import { DataItem } from './data'
 export const week1: DataItem = {
   title: 'Principles & Practices',
   date: '1st april 2022',
-  index: 0,
   hero: 'https://media.istockphoto.com/id/534130204/photo/textured-paint-background.jpg?s=612x612&w=0&k=20&c=Crg3Wj1y8R1uEM7UpZ16ti0szfykU8Z0NV1GEv9Oqc8=',
   blocks: [
     {

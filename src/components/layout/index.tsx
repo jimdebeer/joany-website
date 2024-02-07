@@ -1,56 +1,45 @@
-import { For, createSignal } from 'solid-js'
+import { For, createSignal, createEffect } from 'solid-js'
 import Menu from '../menu'
 import './layout.css'
 import { DataItem, DataBlock } from '../../data/data'
 import { week1 } from '~/data/week1'
 
 const Block = (p: { block: DataBlock }) => {
-  // add expandable
-
   if (p.block.expandable) {
     const [open, setOpen] = createSignal(false)
-
     return (
       <div>
         <div
           onClick={() => {
             setOpen(!open())
           }}
+          class="expander"
           style={{
             display: 'flex',
             'border-bottom': '2px solid black',
           }}
         >
           <div
+            class=""
             style={{
+              transition: 'border-radius 0.5s',
               cursor: 'pointer',
               display: 'flex',
-              // width: '75%',
               width: '30px',
-
               'border-top-left-radius': '148px',
               'border-top-right-radius': '148px',
               height: '15px',
               background: 'black',
               color: 'white',
               'justify-content': 'center',
-              // padding: '15px',
               'align-items': 'center',
               'margin-top': '30px',
+              'padding-top': '4px',
               'margin-left': ~~(Math.random() * 10) * 10 + '%',
               position: 'relative',
             }}
           >
-            {/* <div
-              style={{
-                'font-size': '78px',
-                position: 'absolute',
-                // top: '-36px',
-                // left: '-20px',
-              }}
-            >
-              +
-            </div> */}
+            {open() ? '-' : '+'}
           </div>
         </div>
         <div
@@ -71,7 +60,6 @@ const Block = (p: { block: DataBlock }) => {
       </div>
     )
   }
-
   return (
     <div
       style={{
@@ -82,7 +70,7 @@ const Block = (p: { block: DataBlock }) => {
   )
 }
 
-const Page = (p: { data: DataItem }) => {
+const Page = (p: { data: DataItem; index: number }) => {
   return (
     <div
       class="page-nested"
@@ -109,8 +97,8 @@ const Page = (p: { data: DataItem }) => {
               'font-size': '98px',
             }}
           >
-            {p.data.index < 9 ? '0' : ''}
-            {p.data.index + 1}
+            {p.index < 9 ? '0' : ''}
+            {p.index + 1}
           </div>
           <div style={{ 'margin-bottom': '8px' }}>{p.data.title}</div>
           <div>{p.data.date}</div>
@@ -130,9 +118,10 @@ const Page = (p: { data: DataItem }) => {
   )
 }
 
-const HomePage = (p: { data: DataItem[] }) => {
+const HomePage = (p: { data: DataItem[]; setActive: (nr: number) => void }) => {
   return (
     <div
+      class="home"
       style={{
         display: 'flex',
         gap: '30px',
@@ -143,7 +132,13 @@ const HomePage = (p: { data: DataItem[] }) => {
         {(item, index) => {
           return (
             <div
+              onClick={() => {
+                p.setActive(index())
+              }}
+              class="home-item"
               style={{
+                padding: '10px',
+                cursor: 'pointer',
                 display: 'flex',
                 width: '450px',
                 position: 'relative',
@@ -152,7 +147,6 @@ const HomePage = (p: { data: DataItem[] }) => {
             >
               <div
                 style={{
-                  // border: '1px solid blue',
                   width: '200px',
                   height: '60px',
                   border: '1xp solid blue',
@@ -186,7 +180,6 @@ const HomePage = (p: { data: DataItem[] }) => {
               </div>
               <div
                 style={{
-                  // 'margin-top': '3px',
                   width: '100%',
                   'box-sizing': 'border-box',
                   height: '300px',
@@ -211,7 +204,23 @@ const About = () => {
 }
 
 export default function Layout(p: { data: DataItem[] }) {
-  const [active, setActive] = createSignal(0)
+  const [active, setActive] = createSignal(-1)
+
+  if (typeof window !== 'undefined') {
+    window.addEventListener('hashchange', () => {
+      // @ts-ignore
+      setActive(Number(window.location.hash.split('#')[1] * 1))
+    })
+
+    const h = window.location.hash.split('#')[1]
+
+    // @ts-ignore
+    setActive(h !== undefined ? h * 1 : -1)
+
+    createEffect(() => {
+      window.location.hash = active() + ''
+    })
+  }
 
   return (
     <div class="page">
@@ -222,9 +231,9 @@ export default function Layout(p: { data: DataItem[] }) {
         {active() === -2 ? (
           <About />
         ) : active() === -1 ? (
-          <HomePage data={p.data} />
+          <HomePage data={p.data} setActive={setActive} />
         ) : (
-          <Page data={p.data[active()]} />
+          <Page data={p.data[active()]} index={active()} />
         )}
       </div>
       <div class="page-rest" />

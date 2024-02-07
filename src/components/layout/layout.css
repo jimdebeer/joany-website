@@ -14,6 +14,7 @@
   width: 100%;
   flex-grow: 1;
   padding-bottom: 150px;
+  padding-right: 32px;
 }
 
 .page-nested {
@@ -60,12 +61,27 @@
   border-top: 5px solid black;
 }
 
-@media (width <= 850px) {
+@media (width <= 900px) {
+  .page h1 {
+    line-height: 48px;
+    font-size: 48px;
+    font-weight: 300;
+    margin-bottom: 28px;
+  }
+
+  .page h2 {
+    line-height: 32px;
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+
   .page {
     flex-direction: column;
   }
   .page-main {
     margin-top: 0px;
+    padding-right: 0px;
   }
   .page-inner {
     margin-top: -21px;
@@ -76,5 +92,29 @@
   }
   .page-about {
     padding: 24px;
+    max-width: calc(100vw - 48px);
+  }
+  .home {
+    margin-left: 12px;
+    margin-top: 32px;
+  }
+}
+
+.home-item:hover {
+  background: black;
+  color: white;
+}
+
+.expander {
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .expander:hover > * {
+    border-radius: 0px !important;
+  }
+  .home-item:hover {
+    background: black;
+    color: white;
   }
 }

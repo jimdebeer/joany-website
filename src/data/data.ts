@@ -8,7 +8,6 @@ export type DataBlock = {
 
 export type DataItem = {
   title: string
-  index: number
   date: string
   hero: string // url
   blocks: DataBlock[]
@@ -19,13 +18,11 @@ export const data: DataItem[] = [
   {
     title: 'Principles & Practices',
     date: '1st april 2022',
-    index: 1,
     hero: 'https://images.mome.hu/image/xl/uploads/bak_vivien_reka_0_20220616_141901_4afb44b94a.jpg',
     blocks: [],
   },
   {
     title: 'The aesthetics of pause',
-    index: 2,
     hero: 'https://images.mome.hu/image/xl/uploads/bak_vivien_reka_0_20220616_165755_7dda57df8f.jpg',
     date: '1st april 2022',
     blocks: [
@@ -36,7 +33,6 @@ export const data: DataItem[] = [
   },
   {
     title: 'Veronika Szalai’s doctoral thesis defence',
-    index: 3,
     hero: 'https://images.mome.hu/image/hero/uploads/bak_vivien_reka_0_20220616_165957_5b397c1231.jpg',
     date: '1st april 2022',
     blocks: [
@@ -50,12 +46,10 @@ export const data: DataItem[] = [
     hero: 'https://www.moma.org/media/W1siZiIsIjIxMTIwMyJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA5MCAtcmVzaXplIDIwMDB4MTUwMFx1MDAzZSJdXQ.jpg?sha=582a516a14957aa3',
     date: '2 jan 2024',
     blocks: [],
-    index: 4,
   },
 
   {
     title: 'Lynda Benglis: Victor',
-    index: 5,
     hero: 'https://images.mome.hu/image/xl-2x/uploads/11_szalai_veronika_vedese_557b67e7ad.jpg',
     date: '1st april 2022',
     blocks: [
@@ -89,6 +83,5 @@ export const data: DataItem[] = [
     hero: 'https://walker-web.imgix.net/cms/ex2014ld_ins_027.jpg?auto=format,compress&w=1920&h=1200&fit=crop&dpr=1.5',
     date: '2 jan 2024',
     blocks: [],
-    index: 4,
   },
 ]
