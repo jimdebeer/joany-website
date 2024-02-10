@@ -56,7 +56,6 @@ export const Menu = (p: { data: DataItem[] }) => {
                 height: '100%',
                 width: '100%',
                 backgroundColor: isActive ? 'black' : 'white',
-                /* anti-alias for active state (vs border) */
                 boxShadow: isActive
                   ? '0 0 1px 0 gray inset, 0 0 1px 0 gray'
                   : null,
