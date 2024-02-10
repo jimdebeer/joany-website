@@ -24,7 +24,9 @@ export const Menu = (p: { data: DataItem[] }) => {
         { title: 'home', menuLabel: 'h', path: 'home' },
         ...p.data,
       ].map((d, i) => {
-        const isActive = d.path === route.path.project
+        const isActive =
+          d.path === route.path.project ||
+          (d.title === 'home' && !route.path.project)
         return (
           <styled.div
             key={i}
