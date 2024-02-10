@@ -2,7 +2,8 @@
   "name": "joany-website",
   "type": "module",
   "scripts": {
-    "dev": "esbuild src/index.tsx --bundle --outdir=public --watch --serve --servedir=public --loader:.woff2=dataurl --serve-fallback=public/index.html"
+    "dev": "esbuild src/index.tsx --bundle --outdir=dist --watch --serve --servedir=public --loader:.woff2=dataurl --serve-fallback=public/index.html",
+    "build": "esbuild src/index.tsx --bundle --outdir=public --loader:.woff2=dataurl --minify"
   },
   "prettier": "@saulx/prettier-config",
   "dependencies": {
