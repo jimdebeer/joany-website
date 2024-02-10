@@ -50,6 +50,7 @@ export const App = () => {
           maxHeight: '100vh',
           padding: 64,
           overflow: 'auto',
+          paddingBottom: 128,
           '@media (width <= 900px)': {
             overflow: 'visible',
             padding: '32px',
