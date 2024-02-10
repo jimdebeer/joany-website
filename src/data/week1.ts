@@ -1,4 +1,4 @@
-import { DataItem } from './data'
+import { DataItem } from './index.js'
 
 export const week1: DataItem = {
   title: 'Principles & Practices',

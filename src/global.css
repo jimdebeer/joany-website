@@ -1,0 +1,94 @@
+body,
+html {
+  font-family: 'geist', sans-serif;
+  margin: 0px;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: geist;
+  font-weight: 300;
+  src: url('../public/geist/Geist-Light.woff2');
+}
+
+@font-face {
+  font-family: geist;
+  font-weight: 400;
+  src: url('../public/geist/Geist-Regular.woff2');
+}
+
+@font-face {
+  font-family: geist;
+  font-weight: 500;
+  src: url('../public/geist/Geist-Medium.woff2');
+}
+
+@font-face {
+  font-family: geist;
+  font-weight: 600;
+  src: url('../public/geist/Geist-SemiBold.woff2');
+}
+
+@font-face {
+  font-family: geist;
+  font-weight: 700;
+  src: url('../public/geist/Geist-Bold.woff2');
+}
+
+.text img {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.text p {
+  font-weight: 300;
+  line-height: 32px;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.text b {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 32px;
+  margin-bottom: 16px;
+}
+
+.text h1 {
+  line-height: 76px;
+  font-size: 78px;
+  font-weight: 300;
+  margin-bottom: 28px;
+}
+
+.text h2 {
+  line-height: 48px;
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+@media (width <= 900px) {
+  .text h1 {
+    line-height: 48px;
+    font-size: 48px;
+    font-weight: 300;
+    margin-bottom: 28px;
+  }
+
+  .text h2 {
+    line-height: 32px;
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+}

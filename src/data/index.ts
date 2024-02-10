@@ -1,4 +1,4 @@
-import { week1 } from './week1'
+import { week1 } from './week1.js'
 
 export type DataBlock = {
   html: string
@@ -8,8 +8,10 @@ export type DataBlock = {
 
 export type DataItem = {
   title: string
+  menuLabel?: string
+  path?: string
   date: string
-  hero: string // url
+  hero: string
   blocks: DataBlock[]
 }
 
@@ -17,12 +19,14 @@ export const data: DataItem[] = [
   week1,
   {
     title: 'Principles & Practices',
+    path: 'principles',
     date: '1st april 2022',
     hero: 'https://images.mome.hu/image/xl/uploads/bak_vivien_reka_0_20220616_141901_4afb44b94a.jpg',
     blocks: [],
   },
   {
     title: 'The aesthetics of pause',
+    path: 'pause',
     hero: 'https://images.mome.hu/image/xl/uploads/bak_vivien_reka_0_20220616_165755_7dda57df8f.jpg',
     date: '1st april 2022',
     blocks: [
@@ -84,4 +88,11 @@ export const data: DataItem[] = [
     date: '2 jan 2024',
     blocks: [],
   },
-]
+].map((d) => {
+  return {
+    ...d,
+    path:
+      d.path ??
+      d.title.toLowerCase().replaceAll(' ', '-').replaceAll('&', 'and'),
+  }
+})
