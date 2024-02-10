@@ -4,6 +4,6 @@ import React from 'react'
 
 window.global = window
 
-new EventSource('/esbuild').addEventListener('change', () => location.reload())
+// new EventSource('/esbuild').addEventListener('change', () => location.reload())
 
 render(<App />, document.getElementById('root'))
